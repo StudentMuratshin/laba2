@@ -12,13 +12,30 @@ namespace laba2
     {
         public override bool ContainsPoint(Point p)
         {
-            return false;
+            if ((p.X <= x + 100) & (p.X >= x) & (p.Y >= y) & (p.Y <= y + 50))
+            {
+                if ((p.X <= x + 95) & (p.X >= x + 5) & (p.Y >= y + 5) & (p.Y <= y + 45))
+                {
+                    return false;
+                }
+                else return true;
+            }
+            else return false;
         }
 
         
         public override void Draw(Graphics g)
         {
-            g.DrawRectangle(Pens.Red, x, y, 100, 50);
+            if (Selected)
+            {
+                Pen blackPen = new Pen(Color.FromArgb(255, 0, 0, 0), 5);
+                g.DrawRectangle(blackPen, x, y, 100, 50);
+            }
+            else
+            {
+                Pen blackPen = new Pen(Color.FromArgb(255, 255, 255, 0), 5);
+                g.DrawRectangle(blackPen, x, y, 100, 50);
+            }
         }
     }
 }
